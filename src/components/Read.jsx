@@ -1,11 +1,16 @@
-import React from 'react'
-const Read = (props) => {
-    const data = props.data;
-    const setdata=props.setdata;
+import React, { useContext } from 'react'
+import { toast } from 'react-toastify';
+import { todocontext } from '../Wapper';
+const Read = () => {
+
+  const [data,setdata]=useContext(todocontext);
+    //const data = props.data;
+    //const setdata=props.setdata;
 
     const deletehandler = (id) => {
         const filterdata = data.filter((data)=> data.id != id)
         setdata(filterdata)
+        toast.error("Todo deleted !")
     }
 
      const rendervalue = data.map((data)=>{
